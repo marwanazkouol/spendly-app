@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spendly | Student Finance</title>
+    <meta
+      name="description"
+      content="Spendly helps students manage income, expenses, budgets, savings goals, and spending habits with smart insights."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Sidebar navigation">
+        <div class="brand-wrap">
+          <div class="brand-mark">S</div>
+          <div>
+            <p class="brand-label">Student Finance</p>
+            <h1>Spendly</h1>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Main navigation">
+          <button class="nav-item active" data-section="dashboard">
+            <span>🏠</span>
+            <span>Dashboard</span>
+          </button>
+          <button class="nav-item" data-section="transactions">
+            <span>💸</span>
+            <span>Transactions</span>
+          </button>
+          <button class="nav-item" data-section="budget">
+            <span>📊</span>
+            <span>Budget</span>
+          </button>
+          <button class="nav-item" data-section="savings">
+            <span>🎯</span>
+            <span>Savings</span>
+          </button>
+          <button class="nav-item" data-section="analytics">
+            <span>📈</span>
+            <span>Analytics</span>
+          </button>
+          <button class="nav-item" data-section="settings">
+            <span>⚙️</span>
+            <span>Settings</span>
+          </button>
+        </nav>
+
+        <div class="profile-card">
+          <div class="avatar">MA</div>
+          <div>
+            <h3>Marwan A.</h3>
+            <p>UAE Student</p>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Overview</p>
+            <h2>Financial dashboard</h2>
+          </div>
+
+          <div class="topbar-actions">
+            <div class="currency-pill">AED</div>
+            <button class="theme-toggle" aria-label="Toggle theme">
+              <span class="toggle-thumb">🌙</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="section active" id="dashboard">
+          <div class="hero-card">
+            <div>
+              <p class="eyebrow">Current balance</p>
+              <h3 id="balanceDisplay">AED 2,350.00</h3>
+            </div>
+            <div class="hero-actions">
+              <button class="primary-btn" id="quickAddIncome">+ Add income</button>
+              <button class="secondary-btn" id="quickAddExpense">- Add expense</button>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card accent-green">
+              <div class="stat-icon">📥</div>
+              <div>
+                <p>Total income</p>
+                <h4 id="incomeDisplay">AED 4,600</h4>
+              </div>
+            </article>
+
+            <article class="stat-card accent-red">
+              <div class="stat-icon">📤</div>
+              <div>
+                <p>Total expenses</p>
+                <h4 id="expenseDisplay">AED 2,250</h4>
+              </div>
+            </article>
+
+            <article class="stat-card accent-blue">
+              <div class="stat-icon">💰</div>
+              <div>
+                <p>Savings</p>
+                <h4 id="savingsDisplay">AED 1,350</h4>
+              </div>
+            </article>
+          </div>
+
+          <div class="content-grid dashboard-grid">
+            <div class="panel add-transaction-panel">
+              <div class="panel-header">
+                <h3>Add transaction</h3>
+                <span class="badge neutral">Quick entry</span>
+              </div>
+
+              <form id="transactionForm" class="transaction-form">
+                <div class="input-row two-up">
+                  <label>
+                    <span>Type</span>
+                    <select id="transactionType" name="type">
+                      <option value="income">Income</option>
+                      <option value="expense">Expense</option>
+                    </select>
+                  </label>
+
+                  <label>
+                    <span>Amount</span>
+                    <input id="transactionAmount" name="amount" type="number" min="0" step="0.01" placeholder="0.00" required />
+                  </label>
+                </div>
+
+                <div class="input-row two-up">
+                  <label>
+                    <span>Date</span>
+                    <input id="transactionDate" name="date" type="date" required />
+                  </label>
+
+                  <label>
+                    <span>Category</span>
+                    <select id="transactionCategory" name="category">
+                      <option value="Food">Food</option>
+                      <option value="Transportation">Transportation</option>
+                      <option value="Shopping">Shopping</option>
+                      <option value="Entertainment">Entertainment</option>
+                      <option value="Education">Education</option>
+                      <option value="Subscriptions">Subscriptions</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </label>
+                </div>
+
+                <label>
+                  <span>Description</span>
+                  <input id="transactionDescription" name="description" type="text" placeholder="e.g. Lunch at campus cafe" required />
+                </label>
+
+                <button type="submit" class="primary-btn full-width">Save transaction</button>
+              </form>
+            </div>
+
+            <div class="panel insights-panel">
+              <div class="panel-header">
+                <h3>Smart tips</h3>
+                <span class="badge success">AI-powered</span>
+              </div>
+
+              <div id="tipsList" class="tips-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="transactions">
+          <div class="panel">
+            <div class="panel-header split">
+              <h3>Transaction history</h3>
+              <div class="toolbar">
+                <input id="searchTransactions" type="search" placeholder="Search transactions..." />
+                <select id="transactionFilter">
+                  <option value="all">All</option>
+                  <option value="income">Income</option>
+                  <option value="expense">Expense</option>
+                </select>
+                <select id="transactionSort">
+                  <option value="date-desc">Newest</option>
+                  <option value="date-asc">Oldest</option>
+                  <option value="amount-desc">Highest amount</option>
+                  <option value="amount-asc">Lowest amount</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody id="transactionTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="budget">
+          <div class="panel">
+            <div class="panel-header split">
+              <h3>Budget planner</h3>
+              <div class="segmented-control">
+                <button class="segment active" data-period="weekly">Weekly</button>
+                <button class="segment" data-period="monthly">Monthly</button>
+              </div>
+            </div>
+
+            <div id="budgetList" class="budget-list"></div>
+          </div>
+        </section>
+
+        <section class="section" id="savings">
+          <div class="panel">
+            <div class="panel-header split">
+              <h3>Savings goals</h3>
+              <button class="primary-btn small" id="addGoalButton">+ New goal</button>
+            </div>
+
+            <div class="goal-grid" id="goalGrid"></div>
+          </div>
+        </section>
+
+        <section class="section" id="analytics">
+          <div class="panel analytics-panel">
+            <div class="panel-header">
+              <h3>Spending analytics</h3>
+            </div>
+
+            <div class="analytics-layout">
+              <div class="chart-card">
+                <div class="chart-bars" id="expenseChart"></div>
+              </div>
+
+              <div class="insights-card">
+                <h4>Category breakdown</h4>
+                <ul id="categoryInsightList" class="category-list"></ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="settings">
+          <div class="settings-grid">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Preferences</h3>
+              </div>
+
+              <div class="settings-list">
+                <label class="setting-row">
+                  <span>Default currency</span>
+                  <select id="currencySelect">
+                    <option value="AED" selected>AED</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                  </select>
+                </label>
+
+                <label class="setting-row toggle-row">
+                  <span>Dark mode</span>
+                  <input type="checkbox" id="darkModeToggle" />
+                </label>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Student profile</h3>
+              </div>
+
+              <div class="profile-summary">
+                <div class="avatar large">MA</div>
+                <div>
+                  <h4>Marwan A.</h4>
+                  <p>Student at Zayed University</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="mobile-nav" aria-label="Mobile navigation">
+      <button class="mobile-item active" data-section="dashboard">🏠</button>
+      <button class="mobile-item" data-section="transactions">💸</button>
+      <button class="mobile-item" data-section="budget">📊</button>
+      <button class="mobile-item" data-section="savings">🎯</button>
+      <button class="mobile-item" data-section="settings">⚙️</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
