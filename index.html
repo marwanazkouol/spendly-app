@@ -55,10 +55,10 @@
         </nav>
 
         <div class="profile-card">
-          <div class="avatar">MA</div>
+          <div class="avatar" id="sidebarAvatar">ST</div>
           <div>
-            <h3>Marwan A.</h3>
-            <p>UAE Student</p>
+            <h3 id="sidebarName">Student</h3>
+            <p id="sidebarSchool">Your university</p>
           </div>
         </div>
       </aside>
@@ -82,7 +82,7 @@
           <div class="hero-card">
             <div>
               <p class="eyebrow">Current balance</p>
-              <h3 id="balanceDisplay">AED 2,350.00</h3>
+              <h3 id="balanceDisplay">AED 0.00</h3>
             </div>
             <div class="hero-actions">
               <button class="primary-btn" id="quickAddIncome">+ Add income</button>
@@ -95,7 +95,7 @@
               <div class="stat-icon">📥</div>
               <div>
                 <p>Total income</p>
-                <h4 id="incomeDisplay">AED 4,600</h4>
+                <h4 id="incomeDisplay">AED 0.00</h4>
               </div>
             </article>
 
@@ -103,7 +103,7 @@
               <div class="stat-icon">📤</div>
               <div>
                 <p>Total expenses</p>
-                <h4 id="expenseDisplay">AED 2,250</h4>
+                <h4 id="expenseDisplay">AED 0.00</h4>
               </div>
             </article>
 
@@ -111,7 +111,7 @@
               <div class="stat-icon">💰</div>
               <div>
                 <p>Savings</p>
-                <h4 id="savingsDisplay">AED 1,350</h4>
+                <h4 id="savingsDisplay">AED 0.00</h4>
               </div>
             </article>
           </div>
@@ -264,6 +264,31 @@
           <div class="settings-grid">
             <div class="panel">
               <div class="panel-header">
+                <h3>Profile</h3>
+              </div>
+
+              <form id="profileForm" class="settings-list">
+                <label class="setting-field">
+                  <span>Student name</span>
+                  <input id="studentNameInput" type="text" placeholder="Your name" />
+                </label>
+
+                <label class="setting-field">
+                  <span>University / school</span>
+                  <input id="schoolInput" type="text" placeholder="Your university" />
+                </label>
+
+                <label class="setting-field">
+                  <span>Program</span>
+                  <input id="programInput" type="text" placeholder="Your major or program" />
+                </label>
+
+                <button type="submit" class="primary-btn full-width">Save profile</button>
+              </form>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
                 <h3>Preferences</h3>
               </div>
 
@@ -283,18 +308,12 @@
                   <input type="checkbox" id="darkModeToggle" />
                 </label>
               </div>
-            </div>
-
-            <div class="panel">
-              <div class="panel-header">
-                <h3>Student profile</h3>
-              </div>
 
               <div class="profile-summary">
-                <div class="avatar large">MA</div>
+                <div class="avatar large" id="profileAvatar">ST</div>
                 <div>
-                  <h4>Marwan A.</h4>
-                  <p>Student at Zayed University</p>
+                  <h4 id="profileNameDisplay">Student</h4>
+                  <p id="profileSchoolDisplay">Your university</p>
                 </div>
               </div>
             </div>
@@ -314,4 +333,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
